@@ -1,5 +1,5 @@
 baseURL: "https://leactz.github.io/cubemc-blogrebuild/"
-languageCode: en-us
+languageCode: "en-us"
 title: "CUBE blog"
 disqusShortname: "cubemc"
 params:
