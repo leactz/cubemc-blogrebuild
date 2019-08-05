@@ -12,8 +12,7 @@ params:
 related: 
   includeNewer: true
   indices: 
-    - 
-      name: tags
+    - name: tags
       weight: 10
   threshold: 100
   toLower: false
