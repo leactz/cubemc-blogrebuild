@@ -1,0 +1,139 @@
+.blog-list-card {
+  box-shadow: 1px 1px 4px $tertiary;
+}
+
+.blog-list-home-card {
+  @extend .blog-list-card;
+  transition: background-color .3s ease;
+  a {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-decoration: none;
+    color: $black;
+    img {
+      transition: filter .3s ease;
+    }
+    .blog-list-info {
+      transition: color .3s ease;
+    }
+    .continue-reading {
+      align-self: center;
+      justify-self: flex-end;
+      font-family: $headingType;
+      color: $cta;
+      font-weight: 700;
+      transition: all .3s ease;
+      &::before {
+        content: "\f06e";
+        font-family: 'Font Awesome\ 5 Free';
+        font-weight: 400;
+        font-style: normal;
+        font-size: 1.5em;
+        vertical-align: bottom;
+        color: $primary;
+        padding-right: .5em;
+        transition: color .3s ease;
+      }
+    }
+  }
+  &:hover {
+    background-color: darken($light, 5%);
+    cursor: pointer;
+    a {
+      img {
+        filter: brightness(80%);
+      }
+      .continue-reading {
+        color: $focus;
+        text-shadow: 2px 2px 3px $white;
+        &::before {
+          color: $focus;
+        }
+      }
+    }
+  }
+}
+
+.related-article-card {
+  @extend .blog-list-home-card;
+}
+
+@include mq('tablet-wide') {
+  .blog-list-card {
+    width: 90%;
+    background-color: $light;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2em;
+    .blog-list-img {
+      height: 12em;
+      width: 100%;
+      object-fit: cover;
+      padding: 0;
+    }
+    .blog-list-info {
+      text-align: justify;
+      text-align-last: left;
+      padding: 1em 2em;
+    }
+    .button.continue-reading {
+      margin: 0 auto;
+    }
+  }
+
+  .blog-list-home-card {
+    width: 31.5%;
+    margin: .75%;
+    background-color: $white;
+    padding: 1.25em;
+    box-sizing: border-box;
+    a {
+      .blog-list-img {
+        width: 94%;
+        height: auto;
+        margin: 0 auto;
+      }
+      .blog-list-info {
+        padding: .75em;
+        margin: 0;
+        justify-self: center;
+        h2 {
+          font-size: 1.1em;
+          line-height: 1.6em;
+          height: 4em;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          text-align-last: center;
+        }
+        p {
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+          height: 9em;
+          padding-top: .5em;
+          font-size: .9em;
+          text-align: justify;
+          text-align-last: center;
+        }
+      }
+    }
+    &:hover {
+      background-color: $light;
+    }
+  }
+
+  .related-article-card {
+    .blog-list-img {
+      height: auto;
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+
+}

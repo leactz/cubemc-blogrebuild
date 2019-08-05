@@ -1,0 +1,53 @@
+{{ define "main" }}
+    {{ $tags := "tags" }}
+    <div class="container single-post">
+        <div class="single-post-title">
+            <h1>{{.Title}}</h1>
+            <div class="single-post-meta">
+                {{/*  <i class="fas fa-user author-meta"><span>{{.Params.author}}</span></i>  */}}
+                <i class="fas fa-clock date-meta"><span>{{.Date.Format `January 2006` }}</span></i>
+                {{ range .Param $tags }}
+                {{ $name := . }}
+                <i class="fas fa-paperclip tag"><span><a href="{{ `/tags/` | relURL }}{{ $name | urlize }}">{{ $name | title }}</a></span></i>
+            {{ end }}
+            </div>
+        </div>
+            
+        <div class="single-post-content">
+            {{ .Content }}
+        </div>
+
+    </div>
+
+    <div class="single-post-extra">
+            {{ template "_internal/disqus.html" . }}
+            <div class="related-content">
+                    <h3 class="related-heading">Related Articles</h3>
+                    {{ $related := .Site.RegularPages.Related . }}
+                    {{ range first 3 $related }}
+                    <div class="related-article-card">
+                        <a href="{{ .RelPermalink }}">
+                        {{ if .Params.internal_feature_image }}
+                            {{ $image := .Params.internal_feature_image }}
+                            <img src="{{ $image | absURL }}" alt="" class="blog-list-img">
+                        {{ else }}
+                            {{ $image := .Site.Params.og_image }}
+                            <img src="{{ $image  | absURL }}" alt="" class="blog-list-img">
+                        {{ end }}
+                        <div class="blog-list-info">
+                            <h3>{{.Title}}</h3>
+                        </div>
+                        <p class="continue-reading">Read</p>
+                        </a>
+                    </div>
+                    {{ end }}
+                </div>
+                <div class="prev-and-next-article">
+                    <a class="button article-btn" href="{{ .Parent.URL }}">All Articles</a>
+                    <!-- {{if .PrevPage}} <a class="button article-btn" href="{{.PrevPage.Permalink}}">Previous Article</a>{{end}}
+                    {{if .NextPage}} <a class="button article-btn" href="{{.NextPage.Permalink}}">Next Article</a>{{end}} -->
+                </div>
+        
+                
+    </div>
+{{ end }}

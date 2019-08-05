@@ -1,0 +1,13 @@
+{{ $original := .Page.Resources.GetMatch ( (.Get 0)) }}
+{{ $original := ($.Site.GetPage "section" "uploads").Resources.GetMatch (printf "*%s*" (.Get 0))  }}
+{{ $alt := .Get 1 }}
+{{ $caption := .Get 2 }}
+{{ $image := $original.Resize `1200x q70` }}
+<figure class="responsive-img">
+  <img src="{{ $image.RelPermalink }}" alt="{{ $alt }}">
+  {{ if $caption }}
+    <figcaption>
+      {{ $caption }}
+    </figcaption>
+  {{ end }}
+</figure>

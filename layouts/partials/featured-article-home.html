@@ -1,0 +1,31 @@
+<!--featured article-->
+{{ with $.Site.GetPage `section` `posts` }}
+  <div class="featured-article-home">
+    {{ range first 1 .Pages.ByDate.Reverse }}
+    {{ $tags := "tags" }}
+    <div class="blog-list-card">
+        {{ if .Params.internal_feature_image }}
+          {{ $image := .Params.internal_feature_image }}
+          <img src="{{ $image | absURL }}" alt="" class="blog-list-img">
+        {{ else }}
+          {{ $image := .Site.Params.og_image }}
+          <img src="{{ $image  | absURL }}" alt="" class="blog-list-img">
+        {{ end }}
+        <div class="blog-list-info">
+          <h2>{{.Title | title }}</h2>
+          <div class="featured-post-meta">
+            <i class="fas fa-clock date"><span>{{.Date.Format `January 2006` }}</span></i>
+            {{ range .Param $tags }}
+              {{ $name := . }}
+                <i class="fas fa-paperclip tag"><span>{{ $name | title }}</span></i>
+            {{ end }}
+          </div>
+          {{ if .Params.excerpt }}
+            <p class="post-excerpt">{{.Params.excerpt | markdownify }}</p>
+          {{ end }}
+            <a href="{{.URL}}" class="button continue-reading">Continue Reading</a>
+        </div>
+      </div>
+     {{ end }}
+    {{ end }}
+    </div><!-- end of featured article -->

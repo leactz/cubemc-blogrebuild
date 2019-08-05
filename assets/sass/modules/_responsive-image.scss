@@ -1,0 +1,29 @@
+.responsive-img {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.responsive-img {
+  figcaption {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .5em;
+    color: $captionColor;
+    font-family: $headingType;
+    font-size: .85em;
+    font-weight: 100;
+    font-style: italic;
+  }
+}

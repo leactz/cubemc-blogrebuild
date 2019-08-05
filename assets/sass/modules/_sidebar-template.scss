@@ -1,0 +1,43 @@
+@include mq('tablet-wide') {
+  .sidebar-wrapper {
+    width: calc(100vw - 10%);
+    margin: 0 auto;
+  }
+  .sidebar-body {
+    width: 75%;
+  }
+  .sidebar-side {
+    width: 25%;
+    height: 100vh;
+    padding: 0;
+  }
+
+  .sidebar-card {
+    box-shadow: 1px 1px 4px $tertiary;
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
+    transition: all .3s ease;
+    img {
+      width: 100%;
+    }
+    a {
+      text-decoration: none;
+      color: $black;
+    }
+    figcaption {
+      h2 {
+        text-align: center;
+      }
+      padding: .5em;
+      p {
+        text-align: left;
+      }
+    }
+    &:hover {
+      background-color: $accent;
+    }
+  }
+  
+}
+

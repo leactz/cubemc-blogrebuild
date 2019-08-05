@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}</title>
+  {{ if .Description }}
+    <meta name="description" content="{{  .Description }}">
+  {{ else }}
+    <meta name="description" content="{{ .Site.Params.description }}">
+  {{ end }}
+  <!--opengraph-->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} {{ end }}"/>
+    <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}"/>
+    <meta property="og:site_name" content="{{ .Site.Title }}"/>
+    <meta property="og:url" content="{{ if.IsHome }}{{ .Site.BaseURL }}{{ else }}{{ .Permalink }}{{ end }}"/>
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="{{ if .Params.og_image }} {{ .Params.og_image | absURL }}{{ else }}{{ .Site.Params.og_image | absURL }}{{ end }}"/>
+    <meta property="og:image-secure_url" itemprop="image primaryImageOfPage" content="{{ if .Params.og_image }} {{ .Params.og_image | absURL }}{{ else }}{{ .Site.Params.og_image | absURL }}{{ end }}"/>
+    <meta property="og:image:width" content="1080">
+    <meta property="og:image:height" content="1080">
+  <!--/opengraph-->
+  <!-- twitter cards -->
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:domain" content="{{ if.IsHome }}{{ .Site.BaseURL }}{{ else }}{{ .Permalink }}{{ end }}"/>
+    <meta name="twitter:title" property="og:title" itemprop="name" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} {{ end }}" />
+    <meta name="twitter:description" property="og:description" itemprop="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
+  <!-- /twitter cards-->
+  <!-- proxima nova -->
+  <link rel="stylesheet" href="https://use.typekit.net/vgg7jsl.css">
+  <!-- open sans -->
+  <link rel="stylesheet" href="https://use.typekit.net/kea2xln.css">
+  <!-- montserrat open sans combo -->
+  <link rel="stylesheet" href="https://use.typekit.net/kth0xrq.css">
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <!-- site css -->
+  {{ if eq ( hugo.Environment ) "production" }}
+       {{ $options := (dict "targetPath" "css/styles.css" "outputStyle" "compressed" "includePaths" (slice "modules/*")) }}
+       {{ $styles := resources.Get "sass/style.scss" | resources.ToCSS $options }}
+       <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
+  {{ else  }}
+      {{ $options := (dict "targetPath" "css/styles.css" "includePaths" (slice "modules/*")) }}
+      {{ $styles := resources.Get "sass/style.scss" | resources.ToCSS $options }}
+      <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
+  <!-- /site css -->
+  {{ end }}
+</head>
+<body>
+  {{ block "navigation" . }}
+    {{ partial  "navigation" . }}
+  {{ end }}
+
+  <div class="main">
+      {{ block "main" . }}
+      {{ end }}
+  </div>
+
+  {{ block "footer" . }}
+    {{ partial "footer" . }}
+  {{ end }}
+
+  {{ block "javascript" . }}
+  <!--script src="//inc.freefind.com/inc/ffse-overlay.min.js" async></script-->
+  <!--CUSTOM SITE JS -->
+  {{ $mainjs := resources.Get "js/main.js"  }}
+    <script src="{{$mainjs.RelPermalink}}"></script>
+  {{ end }}
+</body>
+</html>

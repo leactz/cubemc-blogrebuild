@@ -1,0 +1,52 @@
+{{ if .IsHome }}
+<div class="blog-list-home-container">
+    {{ range first 20 ( after 1 .Pages.ByDate.Reverse) }}
+    {{ $tags := "tags" }}
+    <div class="blog-list-home-card">
+      <a href="{{.RelPermalink}}">
+      <div class="blog-list-info">
+        <h2 class="home-card-heading">{{.Title}}</h2>
+        <!-- <div class="post-list-meta">
+            <i class="fas fa-clock date"><span>{{.Date.Format `January 2006` }}</span></i>
+            {{ range .Param $tags }}
+              {{ $name := . }}
+                <i class="fas fa-paperclip tag"><span>{{ $name | title }}</span></i>
+            {{ end }}
+        </div> -->
+      </div>
+      {{ if .Params.internal_feature_image }}
+      {{ $image := .Params.internal_feature_image }}
+      <img src="{{ $image | absURL }}" alt="" class="blog-list-img">
+    {{ else }}
+      {{ $image := .Site.Params.og_image }}
+      <img src="{{ $image  | absURL }}" alt="" class="blog-list-img">
+    {{ end }}
+      <div class="blog-list-info">
+        <p class="post-excerpt">{{ truncate 160 `...` .Summary }}</p>
+      </div>
+
+      <p class="continue-reading">Read</p>
+      </a>
+    </div>
+  {{ end }}
+</div>
+{{else }}
+{{ range first 10 .Pages.ByDate.Reverse }}
+  <div class="blog-list-card">
+    {{ if .Params.internal_feature_image }}
+      {{ $image := .Params.internal_feature_image }}
+      <img src="{{ $image | absURL }}" alt="" class="blog-list-img">
+    {{ else }}
+      {{ $image := .Site.Params.og_image }}
+      <img src="{{ $image  | absURL }}" alt="" class="blog-list-img">
+    {{ end }}
+    <div class="blog-list-info">
+      <h2>{{.Title}}</h2>
+      {{ if .Params.excerpt }}
+        <p class="post-excerpt">{{.Params.excerpt | markdownify }}</p>
+      {{ end }}
+        <a href="{{.URL}}" class="button continue-reading">Continue Reading</a>
+    </div>
+  </div>
+{{ end }}
+{{ end }}

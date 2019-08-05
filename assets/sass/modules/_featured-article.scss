@@ -1,0 +1,9 @@
+@include mq('tablet-wide') {
+  .featured-article-home {
+    width: calc(100vw - 20%);
+    margin: auto;
+    .blog-list-card {
+      width: 100%;
+    }
+  } 
+}

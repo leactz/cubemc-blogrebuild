@@ -1,0 +1,16 @@
+---
+  - country: 'Canada'
+    name: 'CUBE by Exponential Solutions Inc.'
+    street: 'Suite 340, 600 Crowfoot Cresc NW'
+    loc: 'Calgary AB, T3G 0B4 Canada'
+    phone: 'Phone: (403) 800-3333'
+    mainSite: "https://cubemc.com"
+
+  - country: 'USA'
+    name: 'CUBE US'
+    street: '2400 Old Brick Road, C20'
+    loc: 'Glen Allen VA, 23060 United States'
+    phone: 'Phone: +1 (855) 698-2333 toll free'
+
+
+---

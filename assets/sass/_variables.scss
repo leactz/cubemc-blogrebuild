@@ -1,0 +1,61 @@
+$primary : #ef7123;
+$secondary : #fbb03c;
+$tertiary : #d1d2d4;
+$accent : #b4dbe6;
+$dark : #404040;
+$black: #000000;
+$light : #f5f5f5;
+$white: #ffffff;
+
+/* typography */
+$headingType: open-sans, sans-serif;
+$bodyType: montserrat, sans-serif;
+$buttonType: open-sans, sans-serif;
+$pLineHeight: 2em;
+$headingWeight: 700;
+$bodyWeight: 300;
+$buttonWeight: 700;
+
+/* navigation */
+$navBgColor: $light;
+$navItemColor: $dark;
+$navItemType: open-sans, sans-serif;
+$navShadow: 1px 0 1px $tertiary;
+$navHoverBg: transparentize($primary, .5);
+$navActiveBg: transparentize($primary, .2);
+$navActive: $white;
+
+/* images */
+$captionColor: #808080;
+
+/* transistions */
+$mainTransition: all .3s ease;
+
+/* buttons */
+$cta : $primary;
+$focus: saturate($primary, 20%);
+$textFocus: $secondary;
+$buttonShadow: transparentize($dark, .6);
+$buttonHoverShadow: transparentize($dark, .8);
+$buttonBg: $white;
+$buttonBorder: $cta;
+$buttonTypeColor: $primary;
+$buttonHoverType: $white;
+
+//icons
+$footerIcon: $light;
+$footerIconHover: $secondary;
+
+
+/* media breakpoints */
+$breakpoints: (
+    "phone":        25em, //400px,
+    "phone-wide":   30em, //480px,
+    "phablet":      35em, //560px,
+    "tablet-small": 40em, //640px,
+    "tablet":       48em, //768px,
+    "tablet-wide":  64em, //1024px,
+    "desktop":      78em, //1248px,
+    "laptop-mdpi":  80em, //1280px,
+    "desktop-wide": 90em, //1440px
+);

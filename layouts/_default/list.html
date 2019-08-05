@@ -1,0 +1,11 @@
+{{ define "main" }}
+  <h1 class="blog-list-heading">Articles and News Items from CUBE</h1>
+  <div class="sidebar-wrapper">
+    <div class="sidebar-body">
+      {{ partial "blog-list-inner-loop" . }}
+    </div>
+    <div class="sidebar-side">
+      {{ partial "sidebar-content" . }}
+    </div>
+  </div>
+{{ end }}

@@ -1,0 +1,58 @@
+//media queries, default min-width queries
+@mixin mq($width, $type: min) {
+  @if map_has_key($breakpoints, $width) {
+      $width: map_get($breakpoints, $width);
+      @if $type == max {
+          $width: $width - 0.0625em;
+      }
+      @media only screen and (#{$type}-width: $width) {
+          @content;
+      }
+  }
+}
+
+
+//font styles
+@mixin fontStyles( $color, $weight, $alignment, $lineheight, $typeface ){
+	font-family: $typeface;
+	@if $color { color: $color };
+	@if $weight { font-weight: $weight };
+	@if $alignment { text-align: $alignment };
+	@if $lineheight { line-height: $lineheight };
+}
+
+// fluid typography 
+@mixin fluid-type($min-font-size, $max-font-size, $lower-range, $upper-range) {
+
+  font-size: calc(#{$min-font-size} + #{(($max-font-size / ($max-font-size * 0 + 1)) - ($min-font-size / ($min-font-size * 0 + 1)))} * ( (100vw - #{$lower-range}) / #{(($upper-range / ($upper-range * 0 + 1)) - ($lower-range / ($lower-range * 0 + 1)))}));
+
+  @media screen and (max-width: $lower-range) {
+    font-size: $min-font-size;
+  }
+  @media screen and (min-width: $upper-range){
+    font-size: $max-font-size;
+  }
+}
+
+//container width
+@mixin containerWidth($width: $containerWidth, $maxWidth: $maxContainerWidth, $margin: 0 auto) {
+  width: $width;
+  max-width: $maxWidth;
+  margin: $margin;
+}
+
+
+// section height
+@mixin sectionHeight($height: auto, $minHeight: 100vh ) {
+  height: $height;
+  min-height: $minHeight
+}
+
+// background image
+@mixin backgroundImage($url, $size, $position, $attachment, $repeat: no-repeat) {
+  background-image: url($url);
+  background-size: $size;
+  background-position: $position;
+  background-repeat: $repeat;
+  background-attachment: $attachment;
+}

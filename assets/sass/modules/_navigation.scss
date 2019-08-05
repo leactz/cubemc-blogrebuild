@@ -1,0 +1,65 @@
+nav {
+  background-color: $navBgColor;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+.home-link {
+  padding: 0;
+  height: max-content;
+}
+
+.navigation { //ul element
+  list-style: none;
+  transition: $mainTransition;
+  padding: 0;
+  margin: 0;
+}
+
+.navigation li { // ul children
+  padding: 1.5em 0;
+  line-height: normal;
+}
+
+a.nav-item { // li children
+  padding: 1.5em; // keep the same as y-padding for .navigation > li
+  text-decoration: none;
+  color: $navItemColor;
+  text-transform: uppercase;
+  transition: $mainTransition;
+  &:hover {
+    background-color: $navHoverBg;
+    color: $navItemColor;
+  }
+  &:active {
+    background-color: $navActiveBg;
+    color: $navActive;
+  }
+}
+
+a.nav-item.active { // extra .active rule for hugo active class 
+  background-color: $navActiveBg;
+  color: $navActive;
+}
+
+@include mq('tablet-wide') {
+  nav {
+    box-shadow: $navShadow;
+  }
+  .navigation { // ul element
+    display: flex;
+    width: 99%;
+    align-items: center;
+    justify-content: space-between;
+    height: 4em;
+  }
+  .nav-items {
+    display: flex;
+  }
+  .navbar-brand-img { // ul sibling
+    height: 3em;
+    padding-left: 1em;
+    padding-top: .25em;
+  }
+}

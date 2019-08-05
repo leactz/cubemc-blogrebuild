@@ -1,0 +1,11 @@
+{{ define "main" }}
+<h1 class="blog-list-heading">All Content Tagged under "{{ .Title }}":</h1>
+<div class="sidebar-wrapper">
+  <div class="sidebar-body">
+    {{ partial "taxonomy-loop" . }}
+  </div>
+  <div class="sidebar-side">
+    {{ partial "sidebar-content" . }}
+  </div>
+</div>
+{{ end }}

@@ -1,0 +1,35 @@
+{{ partial "search-box-freefind" . }}        
+<!--featured article-->
+{{ with $.Site.GetPage `section` `posts` }}
+  <div class="featured-article">
+    {{ range first 1 .Pages.ByDate.Reverse }}
+      <figure class="sidebar-card">
+        <a  href="{{ .RelPermalink }}">
+          <figcaption>
+            <h2 class="h4"><span class="header">Featured Article</span><br> {{ .Params.displayTitle }}</h2>
+          </figcaption>
+          {{ if .Params.internal_feature_image }}
+            {{ $image := .Params.internal_feature_image }}
+              <img src="{{ $image | absURL }}" alt="" class="featured-article-img">
+          {{ else }}
+            {{ $image := .Site.Params.og_image }}
+              <img src="{{ $image  | absURL }}" alt="" class="featured-article-img">
+          {{ end }}
+          <figcaption>
+              <p>{{ .Params.description }}</p>
+                <p>Click / Tap to read... </p>
+          </figcaption>
+        </a>
+      </figure>
+     {{ end }}
+    {{ end }}
+    </div><!-- end of featured article -->
+<!-- tag selector -->
+  <div class="tag-selector">
+    <p class="h4">Tags</p>
+    <div class="tags">
+      {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+        <a class="blog-tag" href="{{ `/tags/` | relURL }}{{ $name | urlize }}">{{ $name | humanize | title }}</a>
+      {{ end }}
+    </div>
+  </div><!--/tag selector ends-->   

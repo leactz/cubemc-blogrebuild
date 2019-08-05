@@ -1,0 +1,101 @@
+// FOOTER PARTIAL - included on all PAGES
+.scroll-to-top {
+  margin-top: 4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2em 0;
+  background-color: $dark;
+  border-bottom: 1px solid $light;
+  .scroll-to-top-btn {
+    color: $cta;
+    font-size: 3em;
+    text-align: center;
+    &:hover {
+      color: $focus;
+      cursor: pointer;
+    }
+  }
+}
+
+footer {
+  background-color: $dark;
+  @include fontStyles($light, 500, left, 2em, $bodyType );
+  font-size: .8em;
+  .copyright {
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    padding-top: 2rem;
+
+  }
+  .address {
+    padding: 2rem 0 4rem 0;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+            -webkit-box-align: start;
+                -ms-flex-align: start;
+                    align-items: flex-start;
+  }
+  address {
+    font-style: normal;
+    margin-bottom: 2rem;
+    a {
+      color: $cta;
+      transition: color .3s ease;
+      &:hover {
+        color: $focus;
+      }
+    }
+  }
+  .social-icons {
+    i.fab{
+      position: relative;
+      color: $footerIcon;
+      font-size: 2em;
+      margin-right: 1em;
+      -webkit-transition: color .3s ease;
+      transition: color .3s ease;
+      &:hover {
+        color: $footerIconHover;
+      }
+    }
+    .social-tip {
+      visibility: hidden;
+      opacity: 0;
+      @include fontStyles($footerIcon, 300, center, 1.7em, $bodyType );
+      font-size: .5rem;
+      position: absolute;
+      bottom: 140%;
+      left: -80%;
+      width: -webkit-max-content;
+      width: -moz-max-content;
+      width: max-content;
+      -webkit-transition: opacity .3s ease;
+      transition: opacity .3s ease;
+    }
+  }
+}
+
+
+//MEDIA QUERIES
+
+@include mq('tablet-wide') {
+  footer {
+    .address {
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: row;
+              flex-direction: row;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+      }
+    }
+    i.fab:hover > .social-tip {
+      visibility: visible;
+      opacity: 1;
+    }
+  }

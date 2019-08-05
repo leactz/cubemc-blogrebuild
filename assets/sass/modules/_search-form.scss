@@ -1,0 +1,46 @@
+.search-form {
+  display: flex;
+  margin-bottom: 2em;
+  input {
+    padding: 1em;
+  }
+  input[type=text] {
+    width: 80%;
+    background-color: rgba(180, 219, 230, .2);
+    border: 0;
+    font-family: montserrat, sans-serif;
+    font-weight: 900;
+    letter-spacing: .05em;
+    &:focus {
+      outline: 0;
+    }
+  }
+  input[type=submit] {
+    width: 20%;
+    background-color: $secondary;
+    border: 0;
+    transition: all .3s ease;
+    &:hover {
+      cursor: pointer;
+      background-color: $primary;
+    }
+  }
+}
+
+.search-form-home {
+  @extend .search-form;
+  margin: 0 auto;
+  margin-top: 4em;
+}
+
+@include mq('tablet-wide') {
+  .search-form-home {
+    width: calc(100vw - 20%);
+    input[type=text] {
+      width: 90%;
+    }
+    input[type=submit] {
+      width: 10%;
+    }
+  }
+}

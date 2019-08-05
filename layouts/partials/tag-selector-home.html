@@ -1,0 +1,8 @@
+<div class="tag-selector-home">
+  <h1 class="tag-selector-home-heading">Popular Topics:</h1>
+  <div class="tags">
+    {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+      <a class="blog-tag" href="{{ `/tags/` | relURL }}{{ $name | urlize }}">{{ $name | humanize | title }}</a>
+    {{ end }}
+  </div>
+</div>

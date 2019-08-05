@@ -1,0 +1,13 @@
+---
+  - name: 'facebook'
+    href: 'https://www.facebook.com/CUBEplaymore'
+    icon: 'fab fa-facebook'
+
+  - name: 'twitter'
+    href: 'https://twitter.com/CUBEplaymore'
+    icon: 'fab fa-twitter-square'
+
+  - name: 'linkedIn'
+    href: 'https://www.linkedin.com/company/exponential-solutions-the-cube-/'
+    icon: 'fab fa-linkedin'
+---

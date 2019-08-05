@@ -1,0 +1,23 @@
+<div class="container copyright">
+    &copy; {{ now.Format "2006" }} Exponential Solutions Inc.
+</div>
+<div class="container address">
+    {{ $info := .Site.Data.footerContactInfo }}
+    {{ range $info }}
+    <address>
+      <strong>{{ .country }}: {{ .name }}</strong><br>
+      {{ .street }}<br>
+      {{ .loc }}<br>
+      {{ .phone }}
+      {{ if eq .country `Canada`}}
+      <br><br><a href="{{ .mainSite }}"> {{ .mainSite }}</a>
+      {{ end }}
+    </address>
+      {{ end }}
+    <div class="social-icons">
+      {{ $social := .Site.Data.socialLinks }}
+      {{ range $social }}
+      <a href="{{ .href }}" target="_blank"><i class="{{ .icon }}"><span class="social-tip">CUBE on {{ title .name }}</span></i></a>
+      {{ end }}
+    </div>
+</div>

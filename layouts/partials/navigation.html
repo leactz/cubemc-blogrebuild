@@ -1,0 +1,14 @@
+{{- $activePage := . -}}
+<nav role="navigation" >
+    <!--i class="navtoggle fas fa-bars" id="navToggle"></i-->
+<ul class="navigation collapse" id="navExpand">
+    <a class="home-link" href="{{ .Site.BaseURL }}"><img class="navbar-brand-img"  src="{{`images/cube-blog.png` | absURL }}" alt="logo for CUBE"></a>
+    <div class="nav-items">
+        {{ if not .IsHome }}<li><a class="nav-item" href="{{ .Site.BaseURL }}">Home</a></li> {{ end }}
+        {{- range .Site.Menus.main -}}
+        {{- $active := or ($activePage.HasMenuCurrent "main" .) ($activePage.IsMenuCurrent "main" .) -}}
+        <li><a class="nav-item {{ if ($active)}}active{{ end }} {{ if .HasChildren }} parent-nav-item {{ end }}" href="{{.URL}}">{{.Title}}</a></li>
+        {{- end -}}
+    </div>
+</ul>
+</nav>

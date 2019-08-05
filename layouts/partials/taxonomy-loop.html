@@ -1,0 +1,22 @@
+{{ range .Pages }}
+{{ $activePage := .Title }}
+    <div class="blog-list-card">
+        {{ if .Params.internal_feature_image }}
+          {{ $image := .Params.internal_feature_image }}
+          <img src="{{ $image  | absURL }}" alt="" class="featured-article-img">
+        {{ else }}
+          {{ $image := .Site.Params.og_image }}
+          <img src="{{ $image  | absURL }}" alt="" class="featured-article-img">
+        {{ end }}
+        <div class="blog-list-info">
+            <h2>{{.Title}}</h2>
+            <div class="single-post-meta">
+                <i class="fas fa-clock date-meta"><span>{{.Date.Format `January 2006` }}</span></i>
+            </div> 
+            {{ if .Params.excerpt }}
+            <p class="post-excerpt">{{.Params.excerpt | markdownify }}</p>
+            {{ end }}
+          <a href="{{.URL}}" class="button continue-reading">Continue Reading</a>
+        </div>      
+    </div>
+{{ end }}

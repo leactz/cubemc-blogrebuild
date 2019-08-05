@@ -1,0 +1,8 @@
+{{ define "main" }}
+{{ partial "search-box-freefind" . }}
+  {{ partial "tag-selector-home" . }}
+  <h1 class="blog-list-heading">Our Latest Article:</h1>
+  {{ partial "featured-article-home" . }}
+  <h1 class="blog-list-heading">Articles and News Items from CUBE</h1>
+  {{ partial "blog-list-inner-loop" . }}
+{{ end }}
