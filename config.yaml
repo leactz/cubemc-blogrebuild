@@ -1,0 +1,18 @@
+baseURL: 'https://leactz.github.io/cubemc-blogrebuild'
+languageCode: en-us
+title: CUBE blog
+disqusShortname: cubemc
+params:
+  description: The JAMstack rebuild of the CUBEmc.com blog
+  og_image: images/cube-blog-under-construction.jpg
+related:
+  threshold: 100
+  includeNewer: true
+  toLower: false
+  indices:
+    - name: tags
+      weight: 10
+imaging:
+  resampleFilter: linear
+  quality: 70
+  anchor: smart
